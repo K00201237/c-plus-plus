@@ -1,4 +1,4 @@
-#include "Critters.h"
+#include "Critter.h"
 
 Critter::Critter(int hunger, int boredom) :
     m_Hunger(hunger),
@@ -8,6 +8,23 @@ Critter::Critter(int hunger, int boredom) :
 inline int Critter::GetMood() const
 {
     return (m_Hunger + m_Boredom);
+}
+
+
+int Critter::GetHunger() const
+{
+    return (m_Hunger);
+}
+
+int Critter::GetBoredom() const
+{
+    return (m_Boredom);
+}
+
+void Critter::getValue()
+{
+    cout << "My Hunger value is " << GetHunger() << "\n";
+    cout << "My Boredom value is " << GetBoredom() << "\n";
 }
 
 void Critter::PassTime(int time)

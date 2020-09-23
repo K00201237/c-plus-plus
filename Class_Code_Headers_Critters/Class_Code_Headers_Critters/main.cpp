@@ -1,4 +1,4 @@
-#include "Critters.h"
+#include "Critter.h"
 
 int main()
 {
@@ -11,7 +11,8 @@ int main()
         cout << "0 - Quit\n";
         cout << "1 - Listen to your critter\n";
         cout << "2 - Feed your critter\n";
-        cout << "3 - Play with your critter\n\n";
+        cout << "3 - Play with your critter\n";
+        cout << "4 - Critter Diagnostics\n\n";
 
         cout << "Choice: ";
         cin >> choice;
@@ -29,6 +30,9 @@ int main()
             break;
         case 3:
             crit.Play();
+            break;
+        case 4:
+            crit.getValue();
             break;
         default:
             cout << "\nSorry, but " << choice << " isn't a valid choice.\n";
