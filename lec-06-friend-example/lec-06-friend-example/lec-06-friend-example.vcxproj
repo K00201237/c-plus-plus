@@ -19,19 +19,17 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Critter.cpp" />
-    <ClCompile Include="Farm.cpp" />
-    <ClCompile Include="main.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Critter.h" />
-    <ClInclude Include="Farm.h" />
+    <ClCompile Include="..\..\Sample code for Advanced Classes and Dynamic Memory\critter_farm.cpp" />
+    <ClCompile Include="..\..\Sample code for Advanced Classes and Dynamic Memory\friend_critter.cpp" />
+    <ClCompile Include="..\..\Sample code for Advanced Classes and Dynamic Memory\game_lobby.cpp" />
+    <ClCompile Include="..\..\Sample code for Advanced Classes and Dynamic Memory\heap.cpp" />
+    <ClCompile Include="..\..\Sample code for Advanced Classes and Dynamic Memory\heap_data_member.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{f06c372f-e9ac-4755-a89c-48772e995c74}</ProjectGuid>
-    <RootNamespace>CritterFarmex1</RootNamespace>
+    <ProjectGuid>{00ccb020-4266-4659-b9bd-d6e405c72a3b}</ProjectGuid>
+    <RootNamespace>lec06friendexample</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

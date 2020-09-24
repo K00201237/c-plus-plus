@@ -20,18 +20,16 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Critter.cpp" />
-    <ClCompile Include="Farm.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Critter.h" />
-    <ClInclude Include="Farm.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{f06c372f-e9ac-4755-a89c-48772e995c74}</ProjectGuid>
-    <RootNamespace>CritterFarmex1</RootNamespace>
+    <ProjectGuid>{183a8913-820b-41bd-90c8-d067f90cd360}</ProjectGuid>
+    <RootNamespace>lec06critterheapdatamember</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

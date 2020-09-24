@@ -15,22 +15,20 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Critter.cpp">
+    <ClCompile Include="..\..\Sample code for Advanced Classes and Dynamic Memory\critter_farm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Farm.cpp">
+    <ClCompile Include="..\..\Sample code for Advanced Classes and Dynamic Memory\friend_critter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="..\..\Sample code for Advanced Classes and Dynamic Memory\game_lobby.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Critter.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Farm.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <ClCompile Include="..\..\Sample code for Advanced Classes and Dynamic Memory\heap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sample code for Advanced Classes and Dynamic Memory\heap_data_member.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
