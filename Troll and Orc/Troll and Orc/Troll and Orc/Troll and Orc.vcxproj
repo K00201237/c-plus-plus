@@ -23,13 +23,11 @@
     <ClCompile Include="..\..\..\..\..\..\Desktop\College\Year 3\GP\Abstact vectors\main.cpp" />
     <ClCompile Include="..\..\..\..\..\..\Desktop\College\Year 3\GP\Abstact vectors\Orc.cpp" />
     <ClCompile Include="..\..\..\..\..\..\Desktop\College\Year 3\GP\Abstact vectors\Troll.cpp" />
-    <ClCompile Include="Unicorn.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\..\..\Desktop\College\Year 3\GP\Abstact vectors\Creature.h" />
     <ClInclude Include="..\..\..\..\..\..\Desktop\College\Year 3\GP\Abstact vectors\Orc.h" />
     <ClInclude Include="..\..\..\..\..\..\Desktop\College\Year 3\GP\Abstact vectors\Troll.h" />
-    <ClInclude Include="Unicorn.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

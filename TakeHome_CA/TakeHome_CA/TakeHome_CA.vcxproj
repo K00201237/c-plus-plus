@@ -29,14 +29,11 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameCharacter.h" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{679af472-41d8-42b7-a76c-1bd5adb0c0fa}</ProjectGuid>
-    <RootNamespace>TakeHomeAssignmentCathalMaher</RootNamespace>
+    <ProjectGuid>{59f0916e-0aba-4051-8ff2-18acd7ae27d8}</ProjectGuid>
+    <RootNamespace>TakeHomeCA</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

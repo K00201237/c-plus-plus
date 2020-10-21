@@ -1,33 +1,43 @@
 #include <string>
-#ifndef GAMECHARACTER
-#define GAMECHARACTER
+#ifndef GAMECHARACTER_H
+#define GAMECHARACTER_H
 #pragma once
 using namespace std;
 
 class GameCharacter {
 
-protected:
-	std::string m_typeID;
-	int m_health;
-	int m_speed; 
-	int m_x;
-	int m_y;
+
 
 public:
 	void spawn(std::string typeID, int health, int speed, int x, int y);
 	void render();
-	virtual void update();
+	virtual void update() const;
 	void stats();
 	bool isAlive();
 
+protected:
+
+	std::string m_typeID = " ";
+	int m_health;
+	int m_speed;
+	int m_x;
+	int m_y;
+
+
 };
 
-class Enemy
+
+class Enemy : public GameCharacter
 {
+public:
+
+	void update();
 };
 
-class Player
+class Player : public GameCharacter
 {
+public:
+	void update();
 };
 
 

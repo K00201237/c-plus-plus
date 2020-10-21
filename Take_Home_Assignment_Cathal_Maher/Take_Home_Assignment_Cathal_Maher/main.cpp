@@ -1,13 +1,20 @@
 #include "GameCharacter.h"
-#include "Enemy.h"
 #include "Game.h"
-#include "Player.h"
 #include <vector>
-
 
 
 int main()
 {
+	
+
+	//Game* start = new Game();
+	//start->init();
+	Enemy* gcEne = new Enemy();
+	gcEne->update();
+	//Player* gcPla = new Player();
+	//gcPla->update();
+	
+
 	Game* pGame0 = new Game();
 	pGame0->init();
 
@@ -16,15 +23,18 @@ int main()
 
 	vector<Game*>::const_iterator iter;
 
-	for (iter = vpGame.begin(); iter != vpGame.end(); ++iter)
+	
+	for (int i = 0; i < 20; i++)
 	{
-		(*iter)->render();
-		(*iter)->update();
-		(*iter)->battle();
-		(*iter)->stats();
-		(*iter)->clean();
+		for (iter = vpGame.begin(); iter != vpGame.end(); ++iter)
+		{
+			(*iter)->render();
+			(*iter)->update();
+			(*iter)->battle();
+			(*iter)->stats();
+			(*iter)->clean();
+		}
 	}
-
 
 
 }

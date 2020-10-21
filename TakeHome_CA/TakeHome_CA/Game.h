@@ -1,11 +1,6 @@
-#include <string>
-#ifndef GAME_H
-#define GAME_H
-#include "GameCharacter.h"
 #pragma once
 class Game
 {
-
 public:
 	void init();
 	void render();
@@ -13,7 +8,6 @@ public:
 	void battle();
 	void stats();
 	void clean();
+
 };
 
-
-#endif
