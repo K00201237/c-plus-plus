@@ -7,12 +7,12 @@ int main()
 {
 	
 
-	//Game* start = new Game();
-	//start->init();
+	Game* start = new Game();
+	start->init();
 	Enemy* gcEne = new Enemy();
 	gcEne->update();
-	//Player* gcPla = new Player();
-	//gcPla->update();
+	Player* gcPla = new Player();
+	gcPla->update();
 	
 
 	Game* pGame0 = new Game();

@@ -41,6 +41,8 @@ void Game::render()
 {
 	// cycle through the list of GameCharacter ( enemy and player objects) 
 	// and call the render function for each object
+
+
 }
 	
 
@@ -49,18 +51,24 @@ void Game::update()
 {
 	//cycle through the list of GameCharacter (enemy and player objects) and call the 
 	// update function for each object
+
+
 }
 
 void Game::battle()
 {
 	// Check the list to see if two objects occupy the same coords declare that a battle must take  place.
 	// The object with the higher health wins. The loser will have its health set to 0.
+
+
 }
 
 void Game::stats()
 {
 	// cycle through the list of GameCharacters ( enemy and player objects) 
 	// and call the stats function for each object
+
+
 }
 
 void Game::clean()
@@ -68,4 +76,5 @@ void Game::clean()
 	//remove any objects from the list whose health is 0 (Hint use isAlive function)
 	//GameCharacter::isAlive();
 	
+
 }
