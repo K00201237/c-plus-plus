@@ -25,21 +25,26 @@ class Map
 public:
 	player p1;
 	char map[10][20] = {
-		"                   ",
-		"                   ",
-		"                   ",
-		"                   ",
-		"                   ",
-		"                   ",
-		"                   ",
-		"                   ",
-		"                   ",
-		"                   ",
+		"-------------------",
+		"-------------------",
+		"-------------------",
+		"-------------------",
+		"-------------------",
+		"-------------------",
+		"-------------------",
+		"-------------------",
+		"-------------------",
+		"-------------------",
 	};
 	void setupGame();
 	void spawnPlayer(int x, int y, player& p, char playChar);
 	void printMap();
 	void input();
+	void moveRight();
+	void moveLeft();
+	void moveUp();
+	void moveDown();
+	
 
 protected:
 	int m_x;
