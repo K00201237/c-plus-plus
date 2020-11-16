@@ -1,16 +1,18 @@
-#include "map.h"
+#include "game.h"
 #include <iostream>
 
-
+Game* m_game = 0;
+gameCharacterObject* m_gameO = 0;
 
 int main() {
+
+	m_game = new Game;
+	m_gameO = new gameCharacterObject;
+
+	//m_gameO->enemyInfo();
+	m_game->menu();
 	
-	Map* m_Map = new Map();
-	
-	
-		m_Map->setupGame();
-		//m_Map->printMap();
-	
+
 
 
 }
