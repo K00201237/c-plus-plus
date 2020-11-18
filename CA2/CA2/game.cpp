@@ -4,7 +4,7 @@
 #include <time.h>
 using namespace std;
 
-// Draw map on console
+// For loop to draw the 24 lines creating the map
 void Game::printMap() {
     {
         for (int i = 0; i < 24; i++) {
@@ -15,6 +15,7 @@ void Game::printMap() {
 }
 
 
+// *Not Implemeted* I tried to create enemy objects and assign them spawnEnemy function values and putting them in a list
 void Game::init()
 {
     e_enemy1 = new Enemy();
@@ -31,6 +32,7 @@ void Game::init()
     
 }
 
+// Battle function
 void Game::battle()
 {
     int input;
@@ -39,6 +41,8 @@ void Game::battle()
     cout << endl;
     cout << "1: Attack" << endl;
     cout << endl;
+
+    // If player and enemy coordinates align ask the user to attack
     if (Game::map[m_x][m_y] == Game::map[e2_x][e2_y])
     {
         cin >> input;
@@ -46,16 +50,20 @@ void Game::battle()
         {
             if (input == 1)
             {
-                m_eneHealth = m_eneHealth - m_attack;
-                cout << "You strike the enemy and deal " << m_attack << " damage." << endl;
-                cout << "Enemy health: " << m_eneHealth << endl;
-                if (m_eneHealth > 0)
+                // Reduce enenmy health by player attack value and print it out
+                e_health = e_health - m_attack;
+                cout << "You strike the enemy and deal " << e_health << " damage." << endl;
+                cout << "The enemy releases an agonizing roar " << endl;
+                cout << "Enemy health: " << e_health << endl;
+                // If enemy health value is greater than 0. Enemy attacks player, reduce player health by enmy attack value and print it out
+                if (e_health > 0)
                 {
-                    m_health = m_health - m_eneAttack;
-                    cout << "The enemy strikes back and deals " << m_eneAttack << " damage." << endl;
+                    m_health = m_health - e_attack;
+                    cout << "The enemy strikes back and deals " << e_attack << " damage." << endl;
                     cout << "Player health: " << m_health << endl;
                 }
-                if (m_eneHealth < 0)
+                // If enemy health is less than 1, player defeats enemy, and enemy coordinates are moved outside of the playable area and char is blank
+                if (e_health < 1)
                 {
                     cout << "You have defeated the enemy!." << endl;
 
@@ -65,11 +73,21 @@ void Game::battle()
                     temp = Game::map[e2_x][e2_y];
                     Game::map[e2_x][e2_y] = ' ';
                 }
+                // If player health is less than 1, print out statement and call menu function
+                if (m_health < 1)
+                {
+                    cout << "You have died!." << endl;
+                    cout << "You will return to the menu." << endl;
+                    Game::menu();
+
+                }
             }
 
-        } while (m_eneHealth > 0);
+            // continue looping while enemy health is greater than 0
+        } while (e_health > 0);
     }
 
+    // Second enemy
     if (Game::map[m_x][m_y] == Game::map[e3_x][e3_y])
     {
         cin >> input;
@@ -77,16 +95,17 @@ void Game::battle()
         {
             if (input == 1)
             {
-                m_eneHealth = m_eneHealth - m_attack;
+                e_health2 = e_health2 - m_attack;
                 cout << "You strike the enemy and deal " << m_attack << " damage." << endl;
-                cout << "Enemy health: " << m_eneHealth << endl;
-                if (m_eneHealth > 0)
+                cout << "The enemy releases an agonizing roar " << endl;
+                cout << "Enemy health: " << e_health2 << endl;
+                if (e_health2 > 0)
                 {
-                    m_health = m_health - m_eneAttack;
-                    cout << "The enemy strikes back and deals " << m_eneAttack << " damage." << endl;
+                    m_health = m_health - e_attack2;
+                    cout << "The enemy strikes back and deals " << e_attack2 << " damage." << endl;
                     cout << "Player health: " << m_health << endl;
                 }
-                if (m_eneHealth < 0)
+                if (e_health2 < 1)
                 {
                     cout << "You have defeated the enemy!." << endl;
 
@@ -96,11 +115,19 @@ void Game::battle()
                     temp = Game::map[e3_x][e3_y];
                     Game::map[e3_x][e3_y] = ' ';
                 }
+                if (m_health < 1)
+                {
+                    cout << "You have died!." << endl;
+                    cout << "You will return to the menu." << endl;
+                    Game::menu();
+
+                }
             }
 
-        } while (m_eneHealth > 0);
+        } while (e_health2 > 0);
     }
 
+    // Boss enemy
     if (Game::map[m_x][m_y] == Game::map[b_x][b_y])
     {
         cin >> input;
@@ -118,13 +145,14 @@ void Game::battle()
                     m_health = m_health - m_bossAttack;
                     cout << "Player health: " << m_health << endl;
                 }
-                if (m_bossHealth < 0)
+                if (m_bossHealth < 1)
                 {
                     cout << "You have defeated the Boss!." << endl;
+                    cout << "You have saved your home!." << endl;
                     Game::gameComplete();
                    
                 }
-                if (m_health < 0)
+                if (m_health < 1)
                 {
                     cout << "You have died!." << endl;
                     cout << "You will return to the menu." << endl;
@@ -138,7 +166,7 @@ void Game::battle()
     
     
 
-
+    // *Not Implemeted*  I was trying to assign enemies I put in the list x and y coordinates and compare with the players coordinates
 
     //int enemyX;
     //int enemyY;
@@ -162,7 +190,7 @@ void Game::battle()
     //cycle through the list, if its an enemy check to see if it occupies the same position as the player
     //for (iter = e_gameCharacterObjectList.begin(); iter != e_gameCharacterObjectList.end(); ++iter)
     //{
-    //    if ((*iter)->getType() == "enemy" && (playerX == (*iter)->getX()) && (playerY == (*iter)->getY()))	//if an enemy is on the same position as the player
+    //    if ((*iter)->getType() == "enemy" && (m_x == (*iter)->getX()) && (m_y == (*iter)->getY()))	//if an enemy is on the same position as the player
     //    {
     //        if (m_health >= (*iter)->getEnemyHealth())	//if the player has more health
     //        {
@@ -181,7 +209,7 @@ void Game::battle()
 }
 
 
-
+// *Not Implemeted* I was trying to print out info of enemies in the list
 void Game::info()
 {
     std::list<gameCharacterObject*>::const_iterator it;
@@ -196,8 +224,8 @@ void Game::info()
 // Contains functions to start game
 void Game::setupGame() {
     Game::spawnTreasure(t_x, t_y);
+    Game::spawnBomb(bombX, bombY);
     Game::spawnEnemy(e_x, e_y, e_health, e_attack, e_Char);
-    //Game::battle();
     Game::spawnPlayer(4, 45, Game::p1, 'P');
     Game::printMap();
     Game::input();
@@ -207,7 +235,7 @@ void Game::setupGame() {
 
 
 
-// Gives player coords, sets character and stores position
+// Gives player coords, sets character and stores position, assigns player health and attack values, assign potions value
 void Game::spawnPlayer(int x, int y, player& p, char playChar)
 {
     p.pChar = playChar;
@@ -222,12 +250,13 @@ void Game::spawnPlayer(int x, int y, player& p, char playChar)
 
     p_Char = p.pChar;
     m_health = p.health;
-    m_attack = p.attack;
+    m_attack = rand() % 50 + 45;
     potions = 2;
     
 
 }
 
+// Assign x and y coordinates for treasure randomly, assign map coords , assign char
 void Game::spawnTreasure(int x, int y)
 {
     x = t_x;
@@ -235,13 +264,36 @@ void Game::spawnTreasure(int x, int y)
     srand(time(NULL));
     t_x = rand() % (20 - 1 + 1) + 1;
     t_y = rand() % (50 - 1 + 1) + 1;
+
+    t2_x = rand() % (20 - 1 + 1) + 1;
+    t2_y = rand() % (50 - 1 + 1) + 1;
     
-    Game::map[t_x][t_y] = temp;
-    temp = Game::map[t_x][t_y];
+   
     Game::map[t_x][t_y] = 'T';
+
+   
+    Game::map[t2_x][t2_y] = 'T';
 
 }
 
+void Game::spawnBomb(int x, int y)
+{
+    x = bombX;
+    y = bombY;
+    
+    bombX = rand() % (20 - 1 + 1) + 1;
+    bombY = rand() % (20 - 1 + 1) + 1;
+
+    bomb2X = rand() % (20 - 1 + 1) + 1;
+    bomb2Y = rand() % (50 - 1 + 1) + 1;
+
+    
+    Game::map[bombX][bombY] = '*';
+
+    Game::map[bomb2X][bomb2Y] = '*';
+}
+
+// spawn enemy function, assigns enemies x and y coordinates, health and attack. also places the enemy character on map
 void Game::spawnEnemy(int x, int y, int enemyHealth, int enemyAttack, char enemyChar)
 {
     x = gameCharacterObject::getEnemyX();
@@ -259,19 +311,20 @@ void Game::spawnEnemy(int x, int y, int enemyHealth, int enemyAttack, char enemy
     enemyHealth = gameCharacterObject::getEnemyHealth();
     enemyAttack = gameCharacterObject::getEnemyAttack();
    
-    m_eneHealth = enemyHealth;
-    m_eneAttack = enemyAttack;
+    e_health = gameCharacterObject::getEnemyHealth();
+    e_attack = gameCharacterObject::getEnemyAttack();
 
-    Game::map[e_x][e_y] = temp2;
-    temp2 = Game::map[e_x][e_y];
+    e_health2 = gameCharacterObject::getEnemyHealth();
+    e_attack2 = gameCharacterObject::getEnemyHealth();
+
+    // This enemy does not appear after adding the two following enemies. Not sure why this happens.
+
     Game::map[e_x][e_y] = 'E';
 
-    Game::map[e2_x][e2_y] = temp;
-    temp = Game::map[e2_x][e2_y];
+  
     Game::map[e2_x][e2_y] = 'E';
 
-    Game::map[e3_x][e3_y] = temp;
-    temp = Game::map[e3_x][e3_y];
+  
     Game::map[e3_x][e3_y] = 'E';
 
     
@@ -284,24 +337,73 @@ void Game::spawnEnemy(int x, int y, int enemyHealth, int enemyAttack, char enemy
 void Game::input()
 {
     
-
+    // If player coordinates match an enemys coordinates call the battle function
     if (Game::map[m_x][m_y] == Game::map[e_x][e_y] || Game::map[m_x][m_y] == Game::map[e2_x][e2_y] || Game::map[m_x][m_y] == Game::map[e3_x][e3_y])
     {
         Game::battle();
     }
 
+    // If player coordinates match the treasure coordinates, increase potions in inventory
     if (Game::map[m_x][m_y] == Game::map[t_x][t_y])
     {
         potions = potions + 1;
         cout << "You found a Health potion!" << endl;
 
+        // Move traseure to coordinates 0,5 and print blank Character
         Game::map[t_x][t_y] = temp;
         t_x = 0;
-        t_y = 0;
+        t_y = 5;
         temp = Game::map[t_x][t_y];
         Game::map[t_x][t_y] = ' ';
     }
 
+    // If player coordinates match the treasure coordinates, increase player attack value
+    if (Game::map[m_x][m_y] == Game::map[t2_x][t2_y])
+    {
+        m_attack = m_attack + 10;
+        cout << "You found a Magic sword! Your attack has been permantly increased" << endl;
+
+        
+        Game::map[t2_x][t2_y] = temp;
+        t2_x = 0;
+        t2_y = 0;
+        temp = Game::map[t2_x][t2_y];
+        Game::map[t2_x][t2_y] = ' ';
+    }
+
+    // If player coordinates match the bomb coordinates, decrease player health value
+    if (Game::map[m_x][m_y] == Game::map[bombX][bombY])
+    {
+        m_health = m_health - 25;
+        cout << "You Hit a BOMB!!!" << endl;
+        cout << "Player Health: " << m_health << endl;
+
+        
+        Game::map[bombX][bombY] = temp;
+        bombX = 0;
+        bombY = 6;
+        temp = Game::map[bombX][bombY];
+        Game::map[bombX][bombY] = ' ';
+        
+    }
+
+    // If player coordinates match the bomb coordinates, decrease player health value
+    if (Game::map[m_x][m_y] == Game::map[bomb2X][bomb2Y])
+    {
+        m_health = m_health - 25;
+        cout << "You Hit a BOMB!!!" << endl;
+        cout << "Player Health: " << m_health << endl;
+
+
+        Game::map[bomb2X][bomb2Y] = temp;
+        bomb2X = 0;
+        bomb2Y = 7;
+        temp = Game::map[bomb2X][bomb2Y];
+        Game::map[bomb2X][bomb2Y] = ' ';
+
+    }
+
+    // If enemy locations equal these values, spawn boss on coordinates 16,16 and inherit health and attack values.
     if (e2_x == 1 && e2_y == 0 && e3_x == 1 && e3_y == 1)
     {
         b_x = 16;
@@ -314,23 +416,30 @@ void Game::input()
 
     }
 
+    // If player coordinates equal boss coordinates call battle function
     if (Game::map[m_x][m_y] == Game::map[b_x][b_y])
     {
         Game::battle();
     }
    
+    // Print players stats and ask them to enter a direction
     cout << "Player X coordinate: " << m_y << endl;
     cout << "Player Y coordinate: " << m_x << endl;
     cout << "Player Health: " << m_health << endl;
     cout << "Health potions: " << potions << endl;
     cout << "Press 'Q' to use a Health potion" << endl <<endl;
-    cout << "Enter a direction: " << endl;
-    int previous;
+    cout << "Enter a direction: 'W' = North  'S' = South  'D' = East  'A' = West " << endl;
+    int counter = 0;
     char input;
     cin >> input;
     cout << " " << endl;
 
-    if (input == 'q') {
+    do
+    {
+        counter++;
+    
+    // If player has equal or greter than 1 potion, decrement potions, increase player health and call input function
+    if (input == 'q' || input == 'Q') {
         
         if (potions == 1 || potions > 1)
         {
@@ -339,6 +448,7 @@ void Game::input()
             m_health = m_health + 20;
             Game::input();
         }
+        // If player has 0 potions print statement and call input function
         if (potions == 0)
         {
             cout << "You are out of health potions!" << endl;
@@ -347,41 +457,42 @@ void Game::input()
 
     }
 
-    if (input == 's' && m_x > 0 && m_x < 22) {
+    // If player enters w,s,a,d call relevant function unless they are at a map boundary, print statement.
+    if (input == 's' && m_x > 0 && m_x < 22 || input == 'S' && m_x > 0 && m_x < 22) {
         Game::moveDown();
 
     }
-    if (input == 's' && m_x == 22)
+    if (input == 's' && m_x == 22 || input == 'S' && m_x == 22)
     {
         cout << "You are unable to go this way." << endl;
         Game::input();
     }
 
-    if (input == 'w' && m_x < 23 && m_x > 3)
+    if (input == 'w' && m_x < 23 && m_x > 3 || input == 'W' && m_x < 23 && m_x > 3)
     {
         Game::moveUp();
     }
-    if (input == 'w' && m_x == 3)
+    if (input == 'w' && m_x == 3 || input == 'W' && m_x == 3)
     {
         cout << "You are unable to go this way." << endl;
         Game::input();
     }
 
-    if (input == 'd' && m_y > 0 && m_y < 50)
+    if (input == 'd' && m_y > 0 && m_y < 50 || input == 'D' && m_y > 0 && m_y < 50)
     {
         Game::moveRight();
     }
-    if (input == 'd' && m_y == 50)
+    if (input == 'd' && m_y == 50 || input == 'D' && m_y == 50)
     {
         cout << "You are unable to go this way." << endl;
         Game::input();
     }
 
-    if (input == 'a' && m_y < 51 && m_y > 1)
+    if (input == 'a' && m_y < 51 && m_y > 1 || input == 'A' && m_y < 51 && m_y > 1)
     {
         Game::moveLeft();
     }
-    if (input == 'a' && m_y == 1)
+    if (input == 'a' && m_y == 1 || input == 'A' && m_y == 1)
     {
         cout << "You are unable to go this way." << endl;
         Game::input();
@@ -389,11 +500,15 @@ void Game::input()
 
     else
     {
-        cout << "Reached end of level." << endl;
+        cout << "Invalid option." << endl;
+        Game::input();
     }
-
+    } while (input < 10);
+    cout << "Night Time" << endl;
 }
 
+// Move the player right function. Assign current map coords to a temp variable, increment specified coordinate, assign temp to new coordiantes,
+// assign Character, clear the screen, call the print map function and input function 
 void Game::moveRight()
 { 
     Game::map[m_x][m_y] = temp;
@@ -406,6 +521,8 @@ void Game::moveRight()
 
 }
 
+// Move the player left function. Assign current map coords to a temp variable, decrement specified coordinate, assign temp to new coordiantes,
+// assign Character, clear the screen, call the print map function and input function
 void Game::moveLeft()
 {
     Game::map[m_x][m_y] = temp;
@@ -416,6 +533,9 @@ void Game::moveLeft()
     printMap();
     input();
 }
+
+// Move the player up function. Assign current map coords to a temp variable, decrement specified coordinate, assign temp to new coordiantes,
+// assign Character, clear the screen, call the print map function and input function
 
 void Game::moveUp()
 {
@@ -428,6 +548,9 @@ void Game::moveUp()
     input();
 }
 
+// Move the player down function. Assign current map coords to a temp variable, increment specified coordinate, assign temp to new coordiantes,
+// assign Character, clear the screen, call the print map function and input function
+
 void Game::moveDown()
 {
     Game::map[m_x][m_y] = temp;
@@ -439,8 +562,11 @@ void Game::moveDown()
     input();
 }
 
+
 void Game::menu()
 {
+    //Title Screen and backstory
+
     cout << "________          _____                  .___" << endl;
     cout << "\______ \   _____/ ____\____   ____    __| _/" << endl;
     cout << " |    |  \_/ __ \   __\/ __ \ /    \  / __ | " << endl;
@@ -466,20 +592,54 @@ void Game::menu()
     cout << "to fight. You need to defend your home and drive the     " << endl;
     cout << "enemy back!     " << endl;
     cout << "     " << endl;
-    cout << "Press '1' to begin.     " << endl;
+    cout << "Select Difficulty:     " << endl;
+    cout << "Press '1' to play on easy." << endl;
+    cout << "Press '2' to play on normal. " << endl;
+    cout << "Press '3' to play on hard.  " << endl;
 
+    // Selecting level difficulty and adjusting enemy health and attack values.
     int input;
     cin >> input;
     if (input == 1)
     {
+        e_health = e_health * 0.5;
+        e_health2 = e_health2 * 0.5;
+        e_attack = e_attack * 0.5;
+        e_attack2 = e_attack2 * 0.5;
+        m_bossHealth = m_bossHealth * 0.5;
+        m_bossAttack = m_bossAttack * 0.5;
         Game::setupGame();
+    }
+    if (input == 2)
+    {
+        Game::setupGame();
+    }
+    if (input == 3)
+    {
+        e_health = e_health * 1.25;
+        e_health2 = e_health2 * 1.25;
+        e_attack = e_attack * 1.25;
+        e_attack2 = e_attack2 * 1.25;
+        m_bossHealth = m_bossHealth * 1.25;
+        m_bossAttack = m_bossAttack * 1.25;
+        Game::setupGame();
+    }
+    else
+    {
+        cout << "invalid option." << endl;
+        Game::menu();
     }
 }
 
+// Game complete function, print statement and call menu function
 void Game::gameComplete()
 {
     cout << "You have Beaten the game!." << endl;
     Game::menu();
 }
+
+
+
+
 
 

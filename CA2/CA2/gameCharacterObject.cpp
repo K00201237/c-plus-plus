@@ -4,9 +4,11 @@
 #include <time.h>
 
 
-
+// *Not Implemented*
+// Function to spawn enemy
 void gameCharacterObject::spawnEnemy(std::string typeID, char enemyChar, int enemyHealth, int enemyAttack, int enemyX, int enemyY)
 {
+	// Enemy Variables
 	e_typeID = typeID;
 	e_health = enemyHealth;
 	e_attack = enemyAttack;
@@ -17,6 +19,7 @@ void gameCharacterObject::spawnEnemy(std::string typeID, char enemyChar, int ene
 	
 }
 
+// *Not Implemented* Display enemy info
 void gameCharacterObject::enemyInfo()
 {
 	std::cout << "A " << e_typeID << " is about to attack!!" << std::endl;
@@ -26,6 +29,7 @@ void gameCharacterObject::enemyInfo()
 	std::cout << "Enemy Y coordinate: " << e_y << std::endl;
 }
 
+// *Not implemented* Check to see if enemy is alive
 bool gameCharacterObject::enemyAlive()
 {
 	e_typeID = "enemy";
@@ -41,47 +45,46 @@ bool gameCharacterObject::enemyAlive()
 	}
 }
 
+// Assigning enemy a x coordinate
 int gameCharacterObject::getEnemyX()
 {
-	//srand(time(NULL));
-	e_x = 4;//rand() % 10 + 7;
-	e2_x = 9;//rand() % 14 + 12;
-	e3_x = 15; //rand() % 10 + 7;
-	return e_x;
+	srand(time(NULL));
+	e_x = rand() % (33 - 7 + 1) + 7;
+	e2_x = rand() % (18 - 3 + 1) + 3;
+	e3_x = rand() % (18 - 3 + 1) + 3; 
+	return e_x, e2_x, e3_x;
 }
 
+// Assigning enemy a y coordinate
 int gameCharacterObject::getEnemyY()
 {
-	//srand(time(NULL));
-	e_y = rand() % 14 + 7;
-	e2_y = rand() % 25 + 7;
-	e3_y = rand() % 35 + 7;
-	return e_y;
+	
+	e_y = rand() % (14 - 7 + 1) + 7;
+	e2_y = rand() % (16 - 19 + 1) + 7;
+	e3_y = rand() % (8 - 23 + 1) + 7;
+	return e_y, e2_y, e3_y;
 }
 
-int gameCharacterObject::setEnemyHealth(int value)
-{
-	
-	e_health = 60;
-	
-	return e_health;
-}
-
+// Assigning enemy health value
 int gameCharacterObject::getEnemyHealth()
 {
-	e_health  = rand() % 60 + 50;
-	return e_health;
+	e_health = rand() % (65 - 45 + 1) + 45;
+	e_health2 = rand() % (70 - 50 + 1) + 50;;
+	return e_health, e_health2;
 	
 }
 
+// Assigning enemy attack value
 int gameCharacterObject::getEnemyAttack()
 {
-	//srand(time(NULL));
-	e_attack = rand() % 40 + 25;
-	return e_attack;
+	
+	e_attack = rand() % (40 - 30 + 1) + 30;
+	e_attack2 = rand() % (45 - 35 + 1) + 35;
+	return e_attack, e_attack2;
 
 }
 
+// Assigning Boss health value
 int gameCharacterObject::getBossHealth()
 {
 	e_health = rand() % 125 + 100;
@@ -89,17 +92,15 @@ int gameCharacterObject::getBossHealth()
 
 }
 
+// Assigning Boss Attack value
 int gameCharacterObject::getBossAttack()
 {
 	
-	e_attack = rand() % 55 + 10;
+	e_attack = rand() % 55 + 30;
 	return e_attack;
 
 }
 
-void gameCharacterObject::mapEnemy()
-{
 
-}
 
 

@@ -7,23 +7,25 @@
 class gameCharacterObject 
 {
 
+	// Functions
 public:
 	void spawnEnemy(std::string typeID, char enemyChar, int enemyHealth, int enemyAttack, int enemyX, int enemyY);
 	void enemyInfo();
 	bool enemyAlive();
 	int getEnemyX();
 	int getEnemyY();
-	int setEnemyHealth(int value);
 	int getEnemyHealth();
 	int getEnemyAttack();
 	int getBossHealth();
 	int getBossAttack();
-	void mapEnemy();
-
-//protected:
+	
+// Variables
+protected:
 	std::string e_typeID;
 	int e_health;
 	int e_attack;
+	int e_health2;
+	int e_attack2;
 	int e_x;
 	int e2_x;
 	int e3_x;

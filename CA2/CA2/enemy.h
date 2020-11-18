@@ -4,7 +4,7 @@
 #include <iostream>
 #include "gameCharacterObject.h"
 
-
+// *Not implemented*
 class Enemy : public gameCharacterObject
 {
 public:
